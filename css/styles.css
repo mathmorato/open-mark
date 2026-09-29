@@ -1,110 +1,168 @@
 /**
  * Open Mark (doc2md)
- * Design System & Estilos Globais
- * @version v.1.7.5
+ * Design System gov.br / Padrão Digital de Governo
+ * Identidade visual inspirada no DS gov.br (https://www.gov.br/ds/)
+ * @version v.2.0.0
  */
 
 /* ==========================================================================
-   Variáveis CSS & Paleta de Cores (Light / Dark)
+   Design System gov.br - Tokens Oficiais de Cores, Tipografia e Estados
    ========================================================================== */
 :root {
-  /* Modo Claro */
+  /* ------------------------------------------------------------------------
+     Paleta Oficial gov.br - Blue Warm Vivid (Azul Institucional)
+     ------------------------------------------------------------------------ */
+  --gov-blue-warm-90: #071D41; /* Navy profundo institucional / Header & Footer */
+  --gov-blue-warm-80: #0C326F; /* Azul escuro ativo / Hover de ações primárias */
+  --gov-blue-warm-70: #1351B4; /* Azul primário oficial gov.br (Ação Principal) */
+  --gov-blue-warm-60: #155BCB; /* Azul interativo */
+  --gov-blue-warm-50: #2670E8; /* Azul vivo de destaque */
+  --gov-blue-warm-20: #D4E5FF; /* Azul suave para bordas */
+  --gov-blue-warm-10: #EBF2FC; /* Azul sutil para superfícies e seleção */
+
+  /* ------------------------------------------------------------------------
+     Neutros gov.br (Escala Gray)
+     ------------------------------------------------------------------------ */
+  --gov-pure-white: #FFFFFF;
+  --gov-gray-2: #F8F8F8;    /* Fundo de página institucional */
+  --gov-gray-5: #F0F0F0;    /* Superfícies secundárias */
+  --gov-gray-10: #EDEDED;   /* Bordas de cartões e superfícies */
+  --gov-gray-20: #DFDFDF;   /* Bordas de inputs e divisores */
+  --gov-gray-40: #888888;
+  --gov-gray-60: #555555;   /* Texto secundário e rótulos auxiliares */
+  --gov-gray-80: #333333;   /* Texto padrão de corpo (gov.br body text) */
+  --gov-gray-90: #1B1B1B;   /* Títulos e textos de alta ênfase */
+
+  /* ------------------------------------------------------------------------
+     Assinatura de Acessibilidade gov.br (Foco de Alto Contraste)
+     ------------------------------------------------------------------------ */
+  --gov-focus-yellow: #FFCD07; /* Amarelo institucional de foco */
+  --gov-focus-outline: 3px solid #FFCD07;
+
+  /* ------------------------------------------------------------------------
+     Estados Semânticos e Feedback (Conformidade WCAG 2.1 AA)
+     ------------------------------------------------------------------------ */
+  --gov-green-50: #168821;  /* Sucesso institucional (Green Cool Vivid 50) */
+  --gov-green-10: #EBF8EC;  /* Fundo de sucesso */
+  --gov-green-border: #A0DDA3;
+
+  --gov-yellow-50: #D58C00; /* Alerta / Atenção (Yellow Vivid 50) */
+  --gov-yellow-10: #FFF8E6; /* Fundo de alerta */
+  --gov-yellow-border: #FFE48A;
+
+  --gov-red-50: #E52207;    /* Erro / Perigo institucional (Red Vivid 50) */
+  --gov-red-10: #FCECEB;    /* Fundo de erro */
+  --gov-red-border: #F6A9A3;
+
+  /* ------------------------------------------------------------------------
+     Mapeamento de Variáveis do Aplicativo (Modo Claro - Padrão gov.br)
+     ------------------------------------------------------------------------ */
   --bg-primary: #FFFFFF;
-  --bg-surface: #F8FAFC;
+  --bg-surface: #F8F8F8;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F1F5F9;
-  --bg-subtle: #EFF6FF;
-  
-  --border-color: #E2E8F0;
-  --border-hover: #CBD5E1;
-  --border-focus: #2563EB;
-  
-  --text-primary: #0F172A;
-  --text-secondary: #64748B;
-  --text-muted: #94A3B8;
-  
-  --blue-primary: #2563EB;
-  --blue-hover: #1D4ED8;
-  --blue-active: #1E40AF;
-  --blue-subtle: #DBEAFE;
-  --blue-text: #1E40AF;
+  --bg-card-hover: #F2F5F9;
+  --bg-subtle: #EBF2FC;
+  --bg-hover: #F0F4FA;
 
-  --badge-bg: #EFF6FF;
-  --badge-text: #1D4ED8;
-  --badge-border: #BFDBFE;
+  --border-color: #DFDFDF;
+  --border-hover: #CCCCCC;
+  --border-focus: #1351B4;
 
-  /* Estados */
-  --success-color: #10B981;
-  --success-bg: #ECFDF5;
-  --success-border: #A7F3D0;
+  --text-primary: #1B1B1B;
+  --text-secondary: #555555;
+  --text-muted: #717171;
 
-  --warning-color: #F59E0B;
-  --warning-bg: #FFFBEB;
-  --warning-border: #FDE68A;
+  --blue-primary: #1351B4; /* Azul gov.br primário */
+  --blue-hover: #0C326F;   /* Azul gov.br escuro */
+  --blue-active: #071D41;
+  --blue-subtle: #EBF2FC;
+  --blue-text: #0C326F;
 
-  --error-color: #EF4444;
-  --error-bg: #FEF2F2;
-  --error-border: #FECACA;
+  --badge-bg: #EBF2FC;
+  --badge-text: #0C326F;
+  --badge-border: #D4E5FF;
 
-  /* Fontes */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --success-color: #168821;
+  --success-bg: #EBF8EC;
+  --success-border: #A0DDA3;
+
+  --warning-color: #D58C00;
+  --warning-bg: #FFF8E6;
+  --warning-border: #FFE48A;
+
+  --error-color: #E52207;
+  --error-bg: #FCECEB;
+  --error-border: #F6A9A3;
+
+  /* ------------------------------------------------------------------------
+     Tipografia Institucional (Rawline / Raleway / Open Sans com fallback)
+     ------------------------------------------------------------------------ */
+  --font-sans: 'Rawline', 'Raleway', 'Open Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Sombras & Raios */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  /* ------------------------------------------------------------------------
+     Raios de Borda e Dimensões Estruturais (Padrão Digital de Governo)
+     ------------------------------------------------------------------------ */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
+  --radius-pill: 100px;
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  /* Sombras Sutis e Elegantes */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 18px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Modo Escuro (Deep Navy / Slate) */
-[data-theme="dark"] {
-  --bg-primary: #0B0F19;
+/* ==========================================================================
+   Modo Escuro (Deep Navy Institucional / Alto Contraste gov.br)
+   ========================================================================== */
+[data-theme="dark"],
+body.dark-mode {
+  --bg-primary: #0A1120;
   --bg-surface: #0F172A;
-  --bg-card: #1E293B;
-  --bg-card-hover: #24344D;
-  --bg-subtle: #172554;
+  --bg-card: #182238;
+  --bg-card-hover: #1F2D48;
+  --bg-subtle: #15223D;
+  --bg-hover: #1E2E4A;
 
-  --border-color: #334155;
-  --border-hover: #475569;
-  --border-focus: #3B82F6;
+  --border-color: #2E3D58;
+  --border-hover: #3E5175;
+  --border-focus: #4B92F2;
 
   --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
 
-  --blue-primary: #3B82F6;
-  --blue-hover: #60A5FA;
-  --blue-active: #93C5FD;
-  --blue-subtle: #1E3A8A;
-  --blue-text: #93C5FD;
+  --blue-primary: #4B92F2; /* Azul vibrante de alto contraste sobre fundo escuro */
+  --blue-hover: #6EB0FF;
+  --blue-active: #96C6FF;
+  --blue-subtle: #17284A;
+  --blue-text: #96C6FF;
 
-  --badge-bg: rgba(30, 58, 138, 0.4);
-  --badge-text: #60A5FA;
-  --badge-border: #1E3A8A;
+  --badge-bg: rgba(75, 146, 242, 0.15);
+  --badge-text: #6EB0FF;
+  --badge-border: #264375;
 
   --success-color: #34D399;
-  --success-bg: rgba(6, 78, 59, 0.4);
-  --success-border: #065F46;
+  --success-bg: rgba(22, 136, 33, 0.2);
+  --success-border: #168821;
 
   --warning-color: #FBBF24;
-  --warning-bg: rgba(120, 53, 15, 0.4);
-  --warning-border: #92400E;
+  --warning-bg: rgba(213, 140, 0, 0.2);
+  --warning-border: #D58C00;
 
   --error-color: #F87171;
-  --error-bg: rgba(127, 29, 29, 0.4);
-  --error-border: #991B1B;
+  --error-bg: rgba(229, 34, 7, 0.2);
+  --error-border: #E52207;
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 18px -3px rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================================================
@@ -137,16 +195,106 @@ body {
   overflow-x: hidden;
 }
 
+/* Foco Acessível Padrão gov.br */
+:focus-visible {
+  outline: 3px solid var(--gov-focus-yellow) !important;
+  outline-offset: 2px !important;
+}
+
+/* Respeito a Movimento Reduzido (Acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ==========================================================================
-   Header & Topbar
+   Barra de Atalhos e Acessibilidade (Padrão Digital de Governo)
+   ========================================================================== */
+.gov-utility-bar {
+  background-color: var(--gov-blue-warm-90);
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 1.5rem;
+  position: relative;
+  z-index: 60;
+}
+
+[data-theme="dark"] .gov-utility-bar,
+body.dark-mode .gov-utility-bar {
+  background-color: #07101E;
+  border-bottom-color: #1E293B;
+}
+
+.gov-utility-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.gov-utility-left,
+.gov-utility-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Link de Salto de Conteúdo (Acessibilidade por Teclado) */
+.gov-skip-link {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.gov-skip-link:hover,
+.gov-skip-link:focus {
+  color: var(--gov-focus-yellow);
+}
+
+.gov-utility-divider {
+  color: rgba(255, 255, 255, 0.4);
+  user-select: none;
+}
+
+.gov-utility-tag {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.gov-utility-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  padding: 0.15rem 0.55rem;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Header & Topbar Principal
    ========================================================================== */
 .topbar {
   background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.5rem;
   position: sticky;
   top: 0;
   z-index: 50;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
   transition: background-color var(--transition-normal), border-color var(--transition-normal);
 }
 
@@ -161,7 +309,7 @@ body {
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   text-decoration: none;
   color: var(--text-primary);
 }
@@ -170,7 +318,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-primary);
+  color: var(--blue-primary);
   transition: transform var(--transition-fast), color var(--transition-normal);
 }
 
@@ -179,32 +327,44 @@ body {
   height: auto;
   aspect-ratio: 208 / 128;
   display: block;
-  color: var(--text-primary);
+  color: var(--blue-primary);
   transition: color var(--transition-normal), transform var(--transition-fast);
 }
 
 .brand:hover .brand-logo-svg {
-  color: var(--blue-primary);
-  transform: scale(1.05);
+  color: var(--blue-hover);
+  transform: scale(1.04);
 }
 
 .brand-title {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
+  color: var(--text-primary);
 }
 
 .brand-title .accent {
   color: var(--blue-primary);
 }
 
+.brand-subtitle {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-left: 1px solid var(--border-color);
+  padding-left: 0.65rem;
+  margin-left: 0.2rem;
+  display: inline-block;
+  letter-spacing: -0.01em;
+}
+
 .version-badge {
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.15rem 0.5rem;
+  padding: 0.15rem 0.55rem;
   border-radius: var(--radius-full);
   background-color: var(--badge-bg);
   color: var(--badge-text);
@@ -222,9 +382,9 @@ body {
   background: transparent;
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  width: 38px;
-  height: 38px;
-  border-radius: var(--radius-md);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -233,14 +393,14 @@ body {
 }
 
 .btn-icon:hover {
-  background-color: var(--bg-card-hover);
-  color: var(--text-primary);
-  border-color: var(--border-hover);
+  background-color: var(--blue-subtle);
+  color: var(--blue-primary);
+  border-color: var(--blue-primary);
 }
 
 .btn-icon:focus-visible {
-  outline: 2px solid var(--blue-primary);
-  outline-offset: 2px;
+  outline: 3px solid var(--gov-focus-yellow) !important;
+  outline-offset: 2px !important;
 }
 
 /* ==========================================================================
@@ -249,7 +409,7 @@ body {
 .main-content {
   flex: 1;
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 2rem 0 2.5rem 0;
   display: flex;
   flex-direction: column;
 }
@@ -266,7 +426,7 @@ body {
 }
 
 /* ==========================================================================
-   Hero & Drag and Drop Dropzone
+   Hero & Drag and Drop Dropzone (Padrão BR-Upload gov.br)
    ========================================================================== */
 .hero-header,
 .hero-section {
@@ -276,12 +436,23 @@ body {
   margin: 0 auto;
 }
 
+.hero-category-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-primary);
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
 .hero-title {
   font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
 }
 
 .hero-subtitle {
@@ -291,7 +462,48 @@ body {
   max-width: 820px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.5;
+  line-height: 1.55;
+}
+
+/* Banner Institucional de Privacidade (Padrão BR-Message) */
+.gov-message-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background-color: var(--blue-subtle);
+  border: 1px solid var(--badge-border);
+  border-left: 4px solid var(--blue-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.15rem;
+  margin: 0 auto 1.35rem auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+}
+
+.gov-message-icon {
+  color: var(--blue-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gov-message-content {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.gov-message-title {
+  color: var(--blue-primary);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .gov-message-title,
+body.dark-mode .gov-message-title {
+  color: var(--blue-primary);
 }
 
 .dropzone-container {
@@ -304,29 +516,32 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  border: 2px dashed var(--border-color);
+  gap: 0.85rem;
+  border: 2px dashed var(--border-hover);
   background-color: var(--bg-card);
-  border-radius: var(--radius-lg);
-  padding: 2.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  padding: 2.5rem 1.5rem;
   text-align: center;
   cursor: pointer;
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  box-shadow: var(--shadow-sm);
 }
 
 .dropzone:hover,
 .dropzone.drag-over {
   border-color: var(--blue-primary);
-  background-color: var(--bg-subtle);
+  background-color: var(--blue-subtle);
+  border-style: solid;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
 .dropzone.drag-over {
   border-style: solid;
+  border-width: 2px;
 }
 
 .dropzone-inner {
@@ -340,9 +555,9 @@ body {
 
 .dropzone-icon,
 .dropzone-icon-wrap {
-  width: 54px;
-  height: 54px;
-  border-radius: var(--radius-full);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
   background-color: var(--blue-subtle);
   color: var(--blue-primary);
   display: flex;
@@ -353,7 +568,7 @@ body {
 
 .dropzone:hover .dropzone-icon,
 .dropzone:hover .dropzone-icon-wrap {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .upload-icon-svg {
@@ -380,7 +595,7 @@ body {
 .dropzone-subtext,
 .dropzone-subprompt {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -389,7 +604,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   margin-top: 0.4rem;
 }
 
@@ -397,7 +612,7 @@ body {
 .format-tag {
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  padding: 0.2rem 0.55rem;
+  padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
   background-color: var(--bg-surface);
   color: var(--text-secondary);
@@ -409,8 +624,8 @@ body {
 .format-tag.highlight {
   background-color: var(--blue-subtle);
   color: var(--blue-primary);
-  border-color: rgba(37, 99, 235, 0.35);
-  font-weight: 700;
+  border-color: var(--blue-primary);
+  font-weight: 600;
 }
 
 /* Limite de Upload Visível (Dropzone) */
@@ -418,12 +633,12 @@ body {
 .limit-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   margin-top: 0.75rem;
-  padding: 0.3rem 0.75rem;
+  padding: 0.35rem 0.85rem;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #64748B;
+  color: var(--text-secondary);
   background: var(--bg-surface);
   border: 1px dashed var(--border-color);
   border-radius: var(--radius-full);
@@ -452,8 +667,8 @@ body {
 [data-theme="dark"] .limit-indicator,
 [data-theme="dark"] .limit-badge {
   color: #94A3B8;
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 [data-theme="dark"] .limit-indicator strong,
@@ -461,14 +676,16 @@ body {
   color: #F1F5F9;
 }
 
-/* Botão Explícito de Seleção de Arquivo */
+/* Botão Explícito de Seleção de Arquivo (Padrão BR-Button Primary gov.br) */
 .btn-browse {
   margin: 0.35rem 0;
-  padding: 0.65rem 1.4rem;
+  padding: 0.75rem 1.65rem;
   font-size: 0.9375rem;
   font-weight: 600;
-  border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  border-radius: var(--radius-pill);
+  background-color: var(--blue-primary);
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(19, 81, 180, 0.25);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -501,11 +718,17 @@ body {
 }
 
 .btn-browse:hover {
+  background-color: var(--blue-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 4px 12px rgba(19, 81, 180, 0.35);
 }
 
-/* Barra de Telemetria e Diagnóstico Visual Técnico (oculto por padrão) */
+.btn-browse:active {
+  background-color: var(--blue-active);
+  transform: translateY(0);
+}
+
+/* Barra de Telemetria e Diagnóstico Visual Técnico */
 .debug-status {
   display: none;
   margin-top: 0.65rem;
@@ -529,61 +752,71 @@ body {
 
 .debug-status.error {
   display: block;
-  color: #EF4444 !important;
+  color: var(--error-color) !important;
   border-color: var(--error-border) !important;
   background-color: var(--error-bg) !important;
   font-weight: 600;
 }
 
-
 /* ==========================================================================
-   Botões e Controles Globais
+   Botões e Controles Globais (Padrão BR-Button gov.br)
    ========================================================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   font-size: 0.8125rem;
   font-weight: 600;
-  padding: 0.45rem 0.85rem;
-  border-radius: var(--radius-md);
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--transition-fast);
   border: 1px solid transparent;
   text-decoration: none;
   font-family: inherit;
+  line-height: 1.25;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--blue-primary);
-  outline-offset: 2px;
+  outline: 3px solid var(--gov-focus-yellow) !important;
+  outline-offset: 2px !important;
 }
 
+/* BR-Button Primary (Azul Sólido) */
 .btn-primary {
   background-color: var(--blue-primary);
   color: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(19, 81, 180, 0.2);
 }
 
 .btn-primary:hover {
   background-color: var(--blue-hover);
+  box-shadow: 0 3px 8px rgba(19, 81, 180, 0.3);
 }
 
 .btn-primary:active {
   background-color: var(--blue-active);
 }
 
+/* BR-Button Secondary (Outline com borda azul institucional) */
 .btn-secondary {
-  background-color: var(--bg-card);
-  border-color: var(--border-color);
-  color: var(--text-primary);
+  background-color: transparent;
+  border-color: var(--blue-primary);
+  color: var(--blue-primary);
 }
 
 .btn-secondary:hover {
-  background-color: var(--bg-card-hover);
-  border-color: var(--border-hover);
+  background-color: var(--blue-subtle);
+  color: var(--blue-hover);
+  border-color: var(--blue-hover);
 }
 
+.btn-secondary:active {
+  background-color: var(--border-color);
+}
+
+/* BR-Button Ghost / Terciário (Sem borda) */
 .btn-ghost {
   background-color: transparent;
   border-color: transparent;
@@ -596,7 +829,7 @@ body {
 }
 
 .btn-sm {
-  padding: 0.35rem 0.65rem;
+  padding: 0.38rem 0.85rem;
   font-size: 0.75rem;
 }
 
@@ -605,6 +838,9 @@ body {
   color: #FFFFFF !important;
 }
 
+/* ==========================================================================
+   Estilização Markdown Renderizado
+   ========================================================================== */
 .markdown-body code {
   font-family: var(--font-mono);
   font-size: 0.85em;
@@ -644,7 +880,7 @@ body {
 
 .markdown-body th,
 .markdown-body td {
-  padding: 0.6rem 0.9rem;
+  padding: 0.65rem 0.95rem;
   border: 1px solid var(--border-color);
   text-align: left;
 }
@@ -666,14 +902,22 @@ body {
 }
 
 /* ==========================================================================
-   Footer
+   Footer Institucional (Padrão BR-Footer gov.br)
    ========================================================================== */
 .footer {
-  background-color: var(--bg-primary);
-  border-top: 1px solid var(--border-color);
-  padding: 1.25rem 1.5rem;
+  background-color: var(--gov-blue-warm-90);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
   margin-top: auto;
+  color: #FFFFFF;
   transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+[data-theme="dark"] .footer,
+body.dark-mode .footer {
+  background-color: #07101E;
+  border-top-color: #1E293B;
+  color: #CBD5E1;
 }
 
 .footer-container {
@@ -683,29 +927,20 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.25rem;
   font-size: 0.8125rem;
-  color: var(--text-secondary);
 }
 
 .footer-privacy {
   display: flex;
   align-items: center;
   font-size: 0.8125rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.privacy-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-full);
-  background-color: var(--success-bg);
-  color: var(--success-color);
-  border: 1px solid var(--success-border);
-  font-weight: 600;
-  font-size: 0.75rem;
+[data-theme="dark"] .footer-privacy,
+body.dark-mode .footer-privacy {
+  color: #94A3B8;
 }
 
 .footer-links {
@@ -715,16 +950,39 @@ body {
 }
 
 .footer-links a {
-  color: var(--text-secondary);
+  color: #FFFFFF;
   text-decoration: none;
+  font-weight: 500;
   transition: color var(--transition-fast);
 }
 
 .footer-links a:hover {
-  color: var(--blue-primary);
+  color: var(--gov-focus-yellow);
+  text-decoration: underline;
 }
 
+[data-theme="dark"] .footer-links a,
+body.dark-mode .footer-links a {
+  color: #CBD5E1;
+}
 
+[data-theme="dark"] .footer-links a:hover,
+body.dark-mode .footer-links a:hover {
+  color: var(--gov-focus-yellow);
+}
+
+.footer-version {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-theme="dark"] .footer-version,
+body.dark-mode .footer-version {
+  background: rgba(75, 146, 242, 0.2) !important;
+  color: #6EB0FF !important;
+  border-color: #264375 !important;
+}
 
 .metric-badge.error {
   background-color: var(--error-bg);
@@ -744,7 +1002,7 @@ body {
 }
 
 /* ==========================================================================
-   Fila de Arquivos & Progresso em Lote (Batch File Queue)
+   Fila de Arquivos & Progresso em Lote (Padrão BR-Card / BR-List)
    ========================================================================== */
 .file-queue-section {
   width: 100%;
@@ -756,7 +1014,7 @@ body {
 .file-queue-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   padding: 1.25rem;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
@@ -784,7 +1042,7 @@ body {
 .queue-header-title {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   flex: 0 0 auto;
 }
 
@@ -795,18 +1053,18 @@ body {
 }
 
 .file-queue-title {
-  font-size: 1.05rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--text-primary);
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
 }
 
 .file-queue-counter {
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.15rem 0.55rem;
   border-radius: var(--radius-full);
   background: var(--badge-bg);
@@ -815,7 +1073,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Controle de Mesclagem Unificada de Documentos
+   Controle de Mesclagem Unificada de Documentos (Padrão BR-Switch gov.br)
    -------------------------------------------------------------------------- */
 .merge-toggle-container {
   display: flex;
@@ -827,7 +1085,7 @@ body {
 .toggle-switch {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   cursor: pointer;
   user-select: none;
 }
@@ -843,9 +1101,9 @@ body {
 .toggle-slider {
   position: relative;
   display: inline-block;
-  width: 34px;
-  height: 18px;
-  background-color: var(--border-color);
+  width: 36px;
+  height: 20px;
+  background-color: var(--border-hover);
   border-radius: 20px;
   transition: all 0.25s ease;
   flex-shrink: 0;
@@ -854,8 +1112,8 @@ body {
 .toggle-slider::before {
   position: absolute;
   content: "";
-  height: 12px;
-  width: 12px;
+  height: 14px;
+  width: 14px;
   left: 3px;
   bottom: 3px;
   background-color: white;
@@ -873,11 +1131,11 @@ body {
 }
 
 .toggle-switch input:focus-visible + .toggle-slider {
-  box-shadow: 0 0 0 2px var(--blue-subtle), 0 0 0 4px var(--blue-primary);
+  box-shadow: 0 0 0 2px var(--bg-card), 0 0 0 4px var(--gov-focus-yellow);
 }
 
 .toggle-label {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
@@ -916,7 +1174,7 @@ body {
   flex: 0 0 auto;
 }
 
-/* Área da Linha Inferior Dedicada */
+/* Área da Linha Inferior Dedicada para Download Unificado e Ordenação */
 .unified-action-row,
 .unified-download-container {
   display: none;
@@ -952,13 +1210,13 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.38rem 0.75rem;
+  padding: 0.45rem 0.95rem;
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-weight: 600;
+  color: var(--blue-primary);
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--transition-fast);
   white-space: nowrap;
@@ -966,8 +1224,8 @@ body {
 }
 
 .btn-sort:hover {
-  background-color: var(--bg-hover);
-  color: var(--text-primary);
+  background-color: var(--blue-subtle);
+  color: var(--blue-hover);
   border-color: var(--blue-primary);
 }
 
@@ -988,7 +1246,18 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+  border-radius: var(--radius-pill);
+  background-color: var(--blue-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.45rem 1.15rem;
+  box-shadow: 0 2px 6px rgba(19, 81, 180, 0.25);
+  border: 1px solid transparent;
+}
+
+.btn-unified:hover {
+  background-color: var(--blue-hover);
+  box-shadow: 0 4px 10px rgba(19, 81, 180, 0.35);
 }
 
 /* Lista interna onde os cards são empilhados - DEVE ter rolagem isolada */
@@ -1002,6 +1271,25 @@ body {
   flex-direction: column;
   gap: 0.75rem;
   padding-right: 0.5rem;
+}
+
+/* Custom Scrollbar no Padrão gov.br */
+.file-queue-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.file-queue-list::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+  border-radius: 4px;
+}
+
+.file-queue-list::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 4px;
+}
+
+.file-queue-list::-webkit-scrollbar-thumb:hover {
+  background: var(--gov-gray-60);
 }
 
 /* ==========================================================================
@@ -1037,8 +1325,23 @@ body {
 .file-queue-item.active,
 .queue-item.active {
   border-color: var(--blue-primary);
-  background: var(--bg-subtle);
+  background: var(--blue-subtle);
   box-shadow: 0 0 0 1px var(--blue-primary);
+}
+
+/* Destaque Institucional gov.br de Conclusão (Borda lateral esquerda verde) */
+.file-queue-item.completed,
+.file-queue-item.is-completed,
+.queue-item.completed,
+.queue-item.is-completed {
+  border-left: 4px solid var(--success-color);
+}
+
+/* Destaque Institucional gov.br de Falha/Erro (Borda lateral esquerda vermelha) */
+.file-queue-item.has-error,
+.queue-item.has-error {
+  border-left: 4px solid var(--error-color);
+  background-color: var(--error-bg);
 }
 
 /* --------------------------------------------------------------------------
@@ -1051,7 +1354,7 @@ body {
   max-width: 45%;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   overflow: hidden;
 }
 
@@ -1089,7 +1392,9 @@ body {
 }
 
 [data-theme="dark"] .file-badge-icon,
-[data-theme="dark"] .file-sheet-svg {
+[data-theme="dark"] .file-sheet-svg,
+body.dark-mode .file-badge-icon,
+body.dark-mode .file-sheet-svg {
   stroke: #F1F5F9;
   color: #F1F5F9;
 }
@@ -1115,7 +1420,8 @@ body {
   box-sizing: border-box;
 }
 
-[data-theme="dark"] .file-extension-tag {
+[data-theme="dark"] .file-extension-tag,
+body.dark-mode .file-extension-tag {
   background: #0F172A;
   border-color: #F1F5F9;
   color: #F1F5F9;
@@ -1164,7 +1470,11 @@ body {
 [data-theme="dark"] .badge-file-size,
 [data-theme="dark"] .queue-item-size,
 [data-theme="dark"] .item-block.item-info .file-meta,
-[data-theme="dark"] .queue-item-meta {
+[data-theme="dark"] .queue-item-meta,
+body.dark-mode .badge-file-size,
+body.dark-mode .queue-item-size,
+body.dark-mode .item-block.item-info .file-meta,
+body.dark-mode .queue-item-meta {
   background: rgba(255, 255, 255, 0.06);
   color: #94A3B8;
   border-color: rgba(255, 255, 255, 0.1);
@@ -1248,15 +1558,15 @@ body {
   font-weight: 600;
   cursor: help;
   padding: 0.35rem 0.75rem;
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
 }
 
 .item-error-badge:hover {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(229, 34, 7, 0.15);
+  border-color: rgba(229, 34, 7, 0.4);
 }
 
 .item-error-badge .icon-error-circle {
@@ -1302,7 +1612,9 @@ body {
 }
 
 [data-theme="dark"] .mini-progress-label,
-[data-theme="dark"] .progress-label {
+[data-theme="dark"] .progress-label,
+body.dark-mode .mini-progress-label,
+body.dark-mode .progress-label {
   color: #94A3B8;
 }
 
@@ -1439,18 +1751,20 @@ body {
   transform: none !important;
 }
 
-/* Transição de cores para Verde Esmeralda quando a etapa for concluída */
+/* Transição de cores para Verde institucional gov.br quando a etapa for concluída */
 .file-queue-item.upload-done .step-icon-upload {
-  color: #10B981;
+  color: var(--success-color);
 }
 
 .file-queue-item.convert-done .step-icon-convert {
-  color: #10B981;
+  color: var(--success-color);
 }
 
 [data-theme="dark"] .file-queue-item.upload-done .step-icon-upload,
-[data-theme="dark"] .file-queue-item.convert-done .step-icon-convert {
-  color: #34D399;
+[data-theme="dark"] .file-queue-item.convert-done .step-icon-convert,
+body.dark-mode .file-queue-item.upload-done .step-icon-upload,
+body.dark-mode .file-queue-item.convert-done .step-icon-convert {
+  color: var(--success-color);
 }
 
 .read-percent,
@@ -1472,7 +1786,11 @@ body {
 [data-theme="dark"] .read-percent,
 [data-theme="dark"] .upload-percent,
 [data-theme="dark"] .convert-percent,
-[data-theme="dark"] .convert-status-text {
+[data-theme="dark"] .convert-status-text,
+body.dark-mode .read-percent,
+body.dark-mode .upload-percent,
+body.dark-mode .convert-percent,
+body.dark-mode .convert-status-text {
   color: #94A3B8;
 }
 
@@ -1480,14 +1798,15 @@ body {
 .md-output-size {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #10B981;
+  color: var(--success-color);
   margin-left: 0.35rem;
   display: inline-block;
   letter-spacing: -0.01em;
 }
 
-[data-theme="dark"] .md-output-size {
-  color: #34D399;
+[data-theme="dark"] .md-output-size,
+body.dark-mode .md-output-size {
+  color: var(--success-color);
 }
 
 .mini-progress-track,
@@ -1506,7 +1825,10 @@ body {
 
 [data-theme="dark"] .mini-progress-track,
 [data-theme="dark"] .progress-bar-container,
-[data-theme="dark"] .progress-track {
+[data-theme="dark"] .progress-track,
+body.dark-mode .mini-progress-track,
+body.dark-mode .progress-bar-container,
+body.dark-mode .progress-track {
   background: rgba(255, 255, 255, 0.15);
 }
 
@@ -1518,20 +1840,20 @@ body {
   transition: width 240ms cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
 }
 
-/* Barra 1: Leitura do Arquivo (Azul Tech suave #3B82F6) */
+/* Barra 1: Leitura do Arquivo (Azul vivo suave #2670E8) */
 .bar-read,
 .bar-upload,
 .progress-bar-fill.bar-upload {
-  background-color: #3B82F6;
+  background-color: var(--gov-blue-warm-50, #2670E8);
   transition: width 240ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Barra 2: Conversão para Markdown (#2563EB processando, #10B981 sucesso, #EF4444 erro) */
+/* Barra 2: Conversão para Markdown (Azul gov.br, Verde sucesso, Vermelho erro) */
 .bar-convert,
 .progress-bar-fill.bar-convert,
 .mini-progress-fill.bar-convert {
   height: 100%;
-  background-color: #2563EB;
+  background-color: var(--blue-primary);
   border-radius: 9999px;
   transition: width 0.2s ease-out;
 }
@@ -1540,14 +1862,14 @@ body {
 .file-queue-item.completed .bar-convert,
 .queue-item.completed .bar-convert,
 .queue-item.completed .progress-bar-fill.bar-convert {
-  background-color: #10B981;
+  background-color: var(--success-color);
 }
 
 .bar-convert.error,
 .file-queue-item.error .bar-convert,
 .queue-item.error .bar-convert,
 .queue-item.error .progress-bar-fill.bar-convert {
-  background-color: #EF4444;
+  background-color: var(--error-color);
 }
 
 .file-queue-item.completed .bar-read,
@@ -1555,7 +1877,7 @@ body {
 .queue-item.completed .bar-read,
 .queue-item.completed .bar-upload,
 .queue-item.completed .progress-bar-fill.bar-upload {
-  background-color: #10B981;
+  background-color: var(--success-color);
 }
 
 /* --------------------------------------------------------------------------
@@ -1585,14 +1907,16 @@ body {
 }
 
 [data-theme="dark"] .badge-elapsed-time,
-[data-theme="dark"] .queue-item-time {
+[data-theme="dark"] .queue-item-time,
+body.dark-mode .badge-elapsed-time,
+body.dark-mode .queue-item-time {
   color: #94A3B8;
 }
 
-/* Tamanho do Markdown gerado padronizado (0.85rem) com destaque esmeralda */
+/* Tamanho do Markdown gerado padronizado (0.85rem) com destaque verde gov.br */
 .badge-md-size,
 .queue-item-md-size {
-  color: #10B981;
+  color: var(--success-color);
   font-weight: 600;
   font-size: 0.85rem;
   white-space: nowrap;
@@ -1628,7 +1952,7 @@ body {
 
 .status-icon.spinning {
   display: inline-flex;
-  color: #2563EB; /* Azul Tech */
+  color: var(--blue-primary); /* Azul Institucional gov.br */
   animation: spin-hourglass 1.4s linear infinite;
 }
 
@@ -1640,13 +1964,13 @@ body {
 
 .status-icon.success {
   display: inline-flex;
-  color: #10B981; /* Verde esmeralda */
+  color: var(--success-color); /* Verde institucional gov.br */
   animation: pop-check 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .status-icon.icon-error {
   display: inline-flex;
-  color: #EF4444;
+  color: var(--error-color);
 }
 
 .status-icon.icon-queued {
@@ -1661,9 +1985,9 @@ body {
   border: none;
   cursor: pointer;
   padding: 0.45rem;
-  min-width: 38px;
-  min-height: 38px;
-  border-radius: var(--radius-sm);
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1714,7 +2038,7 @@ body {
   background: var(--error-bg);
 }
 
-/* Badge de status textual legada / acessibilidade */
+/* Badge de status textual / acessibilidade */
 .queue-item-status {
   font-size: 0.75rem;
   font-weight: 500;
@@ -1754,17 +2078,22 @@ body {
 }
 
 /* ==========================================================================
-   Responsividade Mobile-First (Tablets & Smartphones: 768px e 480px)
+   Responsividade Mobile-First (Tablets & Smartphones: 768px, 640px e 480px)
    ========================================================================== */
 @media (max-width: 960px) {
   .hero-title {
-    font-size: 1.5rem;
+    font-size: 1.65rem;
   }
 }
 
 @media (max-width: 768px) {
+  .gov-utility-bar {
+    padding: 0.35rem 1rem;
+    font-size: 0.7rem;
+  }
+
   .main-content {
-    padding: 1rem 0;
+    padding: 1.25rem 0;
   }
 
   .app-main-container {
@@ -1773,15 +2102,15 @@ body {
   }
 
   .hero-title {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
   }
 
   .hero-subtitle {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     margin-bottom: 1rem;
   }
 
-  /* Dropzone no Celular: redução de padding, botão com largura 100% e altura de toque confortável (min-height 48px) */
+  /* Dropzone no Celular: redução de padding, botão com largura 100% e altura de toque confortável */
   .dropzone {
     padding: 1.5rem 1rem;
   }
@@ -1852,13 +2181,22 @@ body {
   .btn-queue-item-download,
   .btn-queue-item-remove {
     padding: 0.4rem;
-    min-width: 36px;
-    min-height: 36px;
+    min-width: 38px;
+    min-height: 38px;
   }
 }
 
 /* Telas Pequenas e Smartphones (< 640px): Bloco 1 e 3 no topo, Bloco 2 na linha de baixo 100% */
 @media (max-width: 640px) {
+  .brand-subtitle {
+    display: none;
+  }
+
+  .gov-utility-divider,
+  .gov-utility-tag {
+    display: none;
+  }
+
   .file-queue-item,
   .queue-item {
     flex-wrap: wrap;
@@ -1922,7 +2260,6 @@ body {
   .btn-browse {
     font-size: 0.875rem;
   }
-
 
   .topbar-container {
     padding: 0 0.5rem;
@@ -2001,7 +2338,7 @@ body.dark-mode .global-progress-track,
 .global-progress-fill {
   height: 100%;
   width: 0%;
-  background: #2563EB; /* Azul Tech */
+  background: var(--blue-primary); /* Azul gov.br oficial */
   border-radius: 9999px;
   will-change: width;
   transform: translateZ(0); /* Força camada de composição GPU */
@@ -2009,7 +2346,7 @@ body.dark-mode .global-progress-track,
 }
 
 .global-progress-fill.finished {
-  background: #10B981; /* Verde esmeralda */
+  background: var(--success-color); /* Verde institucional */
 }
 
 /* ==========================================================================
@@ -2070,11 +2407,11 @@ body.dark-mode .global-progress-track,
   align-items: center;
   gap: 0.45rem;
   padding: 0.4rem 0.85rem;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
   font-size: 0.84rem;
-  color: #334155;
+  color: var(--text-primary);
   margin-left: auto; /* Garante que fique encostado no canto superior direito */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   user-select: none;
@@ -2091,7 +2428,7 @@ body.dark-mode .queue-total-bytes-card,
 
 .total-bytes-icon {
   display: inline-flex;
-  color: #2563EB;
+  color: var(--blue-primary);
 }
 
 body.dark-mode .total-bytes-icon,
@@ -2101,7 +2438,7 @@ body.dark-mode .total-bytes-icon,
 
 .total-bytes-label {
   font-weight: 500;
-  color: #64748B;
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 
@@ -2221,7 +2558,7 @@ body.dark-mode .consolidation-track,
 
 .consolidation-fill {
   height: 100%;
-  background: #2563EB;
+  background: var(--blue-primary);
   border-radius: 9999px;
   width: 0%;
   transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2229,7 +2566,7 @@ body.dark-mode .consolidation-track,
 }
 
 .consolidation-fill.finished {
-  background: #10B981;
+  background: var(--success-color);
 }
 
 .consolidation-spinner-icon {
@@ -2261,10 +2598,10 @@ body.dark-mode .consolidation-track,
 
 /* Feedback Visual de Conclusão / Sucesso de Download */
 .btn.is-completed-success {
-  background-color: #10b981 !important;
-  border-color: #10b981 !important;
+  background-color: var(--success-color) !important;
+  border-color: var(--success-color) !important;
   color: #ffffff !important;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25) !important;
+  box-shadow: 0 0 0 3px rgba(22, 136, 33, 0.25) !important;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -2278,8 +2615,8 @@ body.dark-mode .consolidation-track,
 }
 
 .btn-item-action.is-completed-success {
-  color: #10b981 !important;
-  background-color: rgba(16, 185, 129, 0.12) !important;
-  border-color: #10b981 !important;
+  color: var(--success-color) !important;
+  background-color: var(--success-bg) !important;
+  border-color: var(--success-color) !important;
   transition: all 0.2s ease !important;
 }

@@ -1,7 +1,7 @@
 /**
  * Open Mark (doc2md)
  * Controlador Principal da Aplicação
- * @version v.1.9.0
+ * @version v.2.0.0
  */
 
 // Telemetria Global de Erros de Runtime e Falhas de Carregamento de CDN
